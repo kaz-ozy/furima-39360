@@ -75,7 +75,6 @@ belongs_to :enter_delivery_address
 | Column                | Type         | Options     |
 | ------------------    | -------      | ----------- |
 | item_image            | text         | null: false |
-| post_code             | string       | null: false |
 | prefectures           | string       | null: false |
 | municipalities        | string       | null: false |
 | address               | string       | null: false |
