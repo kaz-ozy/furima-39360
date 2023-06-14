@@ -28,48 +28,49 @@ Things you may want to cover:
 ## users テーブル
 <!-- ユーザー管理機能 -->
 
-| Column                | Type         | Options     |
-| ------------------    | -------      | ----------- |
-| nickname              | string       | null: false |
-| email                 | string       | null: false |
-| encrypted_password    | string       | null: false |
-| last-name             | string       | null: false |
-| first-name            | string       | null: false |
-| last-name-kana        | string       | null: false | 
-| first-name-kana       | string       | null: false |
-| year                  | string       | null: false |
-| month                 | string       | null: false |
-| days                  | string       | null: false |
+| Column                | Type         | Options      |
+| ------------------    | -------      | -----------  |
+| nickname              | string       | null: false  |
+| email                 | string       | unique: true |
+| encrypted_password    | string       | null: false  |
+| last_name             | string       | null: false  |
+| first_name            | string       | null: false  |
+| last_name_kana        | string       | null: false  | 
+| first_name_kana       | string       | null: false  |
+| birthday              | date         | null: false  |
+
+
 
 
 ### Association
-has_many :product_information
-belongs_to :enter_delivery_address
-belongs_to :purchase_record
+has_many :items 
+belongs_to :address
+belongs_to :order
 
-## product_information テーブル
+## items テーブル
 <!-- 商品情報 -->
 
 | Column                | Type         | Options     |
 | ------------------    | -------      | ----------- |
-| item_image            | text         | null: false |
 | item_name             | string       | null: false |
 | items_text            | text         | null: false |
 | items_category        | string       | null: false |
 | items_condition       | string       | null: false |
 | selling_price         | string       | null: false |
 
+<!-- item_name       =  アイテム名           -->
 <!-- items_text      =  アイテムテキスト      -->
 <!-- items_category  =  アイテムカテゴリー    -->
 <!-- items_condition =  アイテムの状態       -->
 <!-- selling_price   =  販売価格            -->
 
 ### Association
-belongs_to :users
-belongs_to :purchase_record
-belongs_to :enter_delivery_address
+belongs_to :user
+belongs_to :address
+belongs_to :order
 
-## enter_delivery_address
+
+## addresses テーブル
 <!-- 配送先住所 -->
 
 | Column                | Type         | Options     |
@@ -79,29 +80,30 @@ belongs_to :enter_delivery_address
 | municipalities        | string       | null: false |
 | address               | string       | null: false |
 | building_name         | string       | null: false |
-| telephone_number      | integer      | null: false |
+| telephone_number      | string     | null: false |
 
-<!-- post_code      =  郵便番号    -->
-<!-- prefectures    =  都道府県    -->
-<!-- municipalities =  市町村      -->
-<!-- address        =  住所        -->
-<!-- building_name  =  建物名      -->
+<!-- post_code         =  郵便番号    -->
+<!-- prefectures       =  都道府県    -->
+<!-- municipalities    =  市町村      -->
+<!-- address           =  住所        -->
+<!-- building_name     =  建物名      -->
+<!-- telephone_number  =  電話番号     -->
 
 ### Association
-belongs_to :users
-belongs_to :product_information
-belongs_to :purchase_record
+belongs_to :user
+belongs_to :item
+belongs_to :order
 
-## purchase_record
+## orders テーブル
 <!--  購入記録 -->
 
 | Column                | Type         | Options     |
 | ------------------    | -------      | ----------- |
-| who_buys              | text         | null: false |
-| what_did_you_buy      | text         | null: false |
+| user                  | references   | null: false |
+| item                  | references   | null: false |
 
-<!-- who_buys          =  誰が買ったのか    -->
-<!-- what_did_you_buy  =  何を買った       -->
- belongs_to :users
- belongs_to :product_information
- belongs_to :enter_delivery_address
+<!-- user          =  誰が買ったのか    -->
+<!-- item  =  何を買った       -->
+ belongs_to :user
+ belongs_to :item
+ belongs_to :address
