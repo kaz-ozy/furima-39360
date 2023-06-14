@@ -50,43 +50,45 @@ has_many :orders
 ## items テーブル
 <!-- 商品情報 -->
 
-| Column                | Type         | Options     |
-| ------------------    | -------      | ----------- |
-| item_name             | string       | null: false |
-| items_text            | text         | null: false |
-| items_category        | string       | null: false |
-| items_condition       | string       | null: false |
-| selling_price         | string       | null: false |
-| shipping_charges      | string       | null: false |
-| region_origin         | string       | null: false |
-| days_ship             | integer      | null: false |
-| user                  | references   | null: false |
+| Column                | Type         | Options                        |
+| ------------------    | -------      | -----------                    |
+| name                  | string       | null: false                    |
+| text                  | text         | null: false                    |
+| category_id           | integer      | null: false                    |
+| condition_id          | integer      | null: false                    |
+| price_id              | integer      | null: false                    |
+| charges_id            | integer      | null: false                    |
+| prefectures_id        | integer      | null: false                    |
+| days_ship             | integer      | null: false                    |
+| user                  | references   | null: false ,foreign_key: true |
 
-<!-- item_name        =  アイテム名           -->
-<!-- items_text       =  アイテムテキスト      -->
-<!-- items_category   =  アイテムカテゴリー    -->
-<!-- items_condition  =  アイテムの状態       -->
-<!-- selling_price    =  販売価格            -->
-<!-- shipping_charges =  配送料の負担         -->
-<!-- region_origin    =  発送元の地域         -->
-<!-- days_ship        =  発送までの日数        -->
+<!-- name           =  アイテム名           -->
+<!-- text           =  アイテムテキスト      -->
+<!-- category       =  アイテムカテゴリー    -->
+<!-- condition      =  アイテムの状態       -->
+<!-- price          =  販売価格            -->
+<!-- charges        =  配送料の負担         -->
+<!-- prefectures    =  発送元の地域         -->
+<!-- days_ship      =  発送までの日数        -->
 
 ### Association
 belongs_to :user
-belongs_to :address
-belongs_to :order
+
+has_one :order
 
 
 ## addresses テーブル
 <!-- 配送先住所 -->
 
-| Column                | Type         | Options     |
-| ------------------    | -------      | ----------- |
-| prefectures           | string       | null: false |
-| municipalities        | string       | null: false |
-| address               | string       | null: false |
-| building_name         | string       |             |
-| telephone_number      | string       | null: false |
+| Column                | Type         | Options                        |
+| ------------------    | -------      | -----------                    |
+| post_code             | string       | null: false                    |
+| prefectures           | string       | null: false                    |
+| municipalities        | string       | null: false                    |
+| address               | string       | null: false                    |
+| building_name         | string       |                                |
+| telephone_number      | string       | null: false                    |
+| user                  | references   | null: false ,foreign_key: true |
 
 <!-- post_code         =  郵便番号    -->
 <!-- prefectures       =  都道府県    -->
@@ -102,13 +104,15 @@ belongs_to :older
 ## orders テーブル
 <!--  購入記録 -->
 
-| Column                | Type         | Options     |
-| ------------------    | -------      | ----------- |
-| user                  | references   | null: false |
-| item                  | references   | null: false |
+| Column                | Type         | Options                        |
+| ------------------    | -------      | -----------                    |
+| user                  | references   | null: false ,foreign_key: true |
+| item                  | references   | null: false                    |
 
 <!-- user          =  誰が買ったのか    -->
-<!-- item  =  何を買った       -->
+<!-- item          =  何を買った       -->
  belongs_to :user
  belongs_to :item
  has_one :address
+
+ <!--  -->
