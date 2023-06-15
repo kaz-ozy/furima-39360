@@ -58,7 +58,7 @@ has_many :orders
 | condition_id          | integer      | null: false                    |
 | price                 | integer      | null: false                    |
 | charges_id            | integer      | null: false                    |
-| prefectures_id        | integer      | null: false                    |
+| prefecture_id        | integer      | null: false                    |
 | days_ship_id          | integer      | null: false                    |
 | user                  | references   | null: false ,foreign_key: true |
 
@@ -83,7 +83,7 @@ has_one :order
 | Column                | Type         | Options                        |
 | ------------------    | -------      | -----------                    |
 | post_code             | string       | null: false                    |
-| prefectures_id        | string       | null: false                    |
+| prefecture_id        | string       | null: false                    |
 | municipalities        | string       | null: false                    |
 | address               | string       | null: false                    |
 | building_name         | string       |                                |
@@ -98,7 +98,7 @@ has_one :order
 <!-- telephone_number  =  電話番号     -->
 
 ### Association
-belongs_to :older
+belongs_to :order
 
 
 ## orders テーブル
