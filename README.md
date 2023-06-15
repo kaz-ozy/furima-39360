@@ -29,7 +29,7 @@ Things you may want to cover:
 <!-- ユーザー管理機能 -->
 
 | Column                | Type         | Options                   |
-| ------------------    | -------      | ------------------------  |
+| -----------------     | -------      | ------------------------  |
 | nickname              | string       | null: false               |
 | email                 | string       | null: false ,unique: true |
 | encrypted_password    | string       | null: false               |
@@ -56,10 +56,10 @@ has_many :orders
 | text                  | text         | null: false                    |
 | category_id           | integer      | null: false                    |
 | condition_id          | integer      | null: false                    |
-| price_id              | integer      | null: false                    |
+| price                 | integer      | null: false                    |
 | charges_id            | integer      | null: false                    |
 | prefectures_id        | integer      | null: false                    |
-| days_ship             | integer      | null: false                    |
+| days_ship_id          | integer      | null: false                    |
 | user                  | references   | null: false ,foreign_key: true |
 
 <!-- name           =  アイテム名           -->
@@ -83,12 +83,12 @@ has_one :order
 | Column                | Type         | Options                        |
 | ------------------    | -------      | -----------                    |
 | post_code             | string       | null: false                    |
-| prefectures           | string       | null: false                    |
+| prefectures_id        | string       | null: false                    |
 | municipalities        | string       | null: false                    |
 | address               | string       | null: false                    |
 | building_name         | string       |                                |
 | telephone_number      | string       | null: false                    |
-| user                  | references   | null: false ,foreign_key: true |
+| order                 | references   | null: false ,foreign_key: true |
 
 <!-- post_code         =  郵便番号    -->
 <!-- prefectures       =  都道府県    -->
@@ -107,7 +107,7 @@ belongs_to :older
 | Column                | Type         | Options                        |
 | ------------------    | -------      | -----------                    |
 | user                  | references   | null: false ,foreign_key: true |
-| item                  | references   | null: false                    |
+| item                  | references   | null: false ,foreign_key: true |
 
 <!-- user          =  誰が買ったのか    -->
 <!-- item          =  何を買った       -->
