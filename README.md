@@ -58,7 +58,7 @@ has_many :orders
 | condition_id          | integer      | null: false                    |
 | price                 | integer      | null: false                    |
 | charges_id            | integer      | null: false                    |
-| prefecture_id        | integer      | null: false                    |
+| prefecture_id         | integer      | null: false                    |
 | days_ship_id          | integer      | null: false                    |
 | user                  | references   | null: false ,foreign_key: true |
 
@@ -68,7 +68,7 @@ has_many :orders
 <!-- condition      =  アイテムの状態       -->
 <!-- price          =  販売価格            -->
 <!-- charges        =  配送料の負担         -->
-<!-- prefectures    =  発送元の地域         -->
+<!-- prefecture     =  発送元の地域         -->
 <!-- days_ship      =  発送までの日数        -->
 
 ### Association
@@ -83,16 +83,16 @@ has_one :order
 | Column                | Type         | Options                        |
 | ------------------    | -------      | -----------                    |
 | post_code             | string       | null: false                    |
-| prefecture_id        | string       | null: false                    |
-| municipalities        | string       | null: false                    |
+| prefecture_id         | integer      | null: false                    |
+| municipalitie         | string       | null: false                    |
 | address               | string       | null: false                    |
 | building_name         | string       |                                |
 | telephone_number      | string       | null: false                    |
 | order                 | references   | null: false ,foreign_key: true |
 
 <!-- post_code         =  郵便番号    -->
-<!-- prefectures       =  都道府県    -->
-<!-- municipalities    =  市町村      -->
+<!-- prefecture       =  都道府県    -->
+<!-- municipalitie    =  市町村      -->
 <!-- address           =  住所        -->
 <!-- building_name     =  建物名      -->
 <!-- telephone_number  =  電話番号     -->
