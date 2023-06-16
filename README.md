@@ -53,17 +53,17 @@ has_many :orders
 | Column                | Type         | Options                        |
 | ------------------    | -------      | -----------                    |
 | name                  | string       | null: false                    |
-| text                  | text         | null: false                    |
+| explanation           | text         | null: false                    |
 | category_id           | integer      | null: false                    |
 | condition_id          | integer      | null: false                    |
 | price                 | integer      | null: false                    |
-| charges_id            | integer      | null: false                    |
+| charge_id             | integer      | null: false                    |
 | prefecture_id         | integer      | null: false                    |
 | days_ship_id          | integer      | null: false                    |
 | user                  | references   | null: false ,foreign_key: true |
 
 <!-- name           =  アイテム名           -->
-<!-- text           =  アイテムテキスト      -->
+<!-- explanation    =  アイテムテキスト      -->
 <!-- category       =  アイテムカテゴリー    -->
 <!-- condition      =  アイテムの状態       -->
 <!-- price          =  販売価格            -->
