@@ -60,30 +60,31 @@ RSpec.describe User, type: :model do
     end
 
     it "お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること" do
-      @user.last_name = ''
+      @user.last_name = "a"
       @user.valid?
-      expect(@user.errors.full_messages).to include "Last name can't be blank"
+      
+      expect(@user.errors.full_messages).to include "Last name 全角文字を使用してください"
     end
 
     it "お名前(全角)は、全角（漢字・ひらがな・カタカナ）での入力が必須であること" do
-      @user.first_name = ''
+      @user.first_name = 'c'
       @user.valid?
       
-      expect(@user.errors.full_messages).to include "First name can't be blank"
+      expect(@user.errors.full_messages).to include "First name 全角文字を使用してください"
     end
    
     it "お名前カナ(全角)は、全角（カタカナ）での入力が必須であること" do
-      @user.last_name_kana = ''
+      @user.last_name_kana = 'ｱ'
       @user.valid?
       
-      expect(@user.errors.full_messages).to include "Last name kana can't be blank"
+      expect(@user.errors.full_messages).to include "Last name kana is invalid"
     end
 
     it "お名前カナ(全角)は、全角（カタカナ）での入力が必須であること" do
-      @user.first_name_kana = ''
+      @user.first_name_kana = 'ｶ'
       @user.valid?
       
-      expect(@user.errors.full_messages).to include "First name kana can't be blank"
+      expect(@user.errors.full_messages).to include "First name kana is invalid"
     end
 
     it "passwordとpassword_confirmationが不一致では登録できない" do
@@ -141,3 +142,6 @@ RSpec.describe User, type: :model do
   end
 end
 end
+
+
+        # binding.pry  止める構文
