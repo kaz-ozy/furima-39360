@@ -24,14 +24,14 @@ class Item < ApplicationRecord
   validates :explanation, presence: true
   # <!-- explanation    =  アイテムテキスト      -->
 
-  validates :category, presence: true
+  validates :category_id, presence: true
   # <!-- category       =  アイテムカテゴリー    -->
 
-  validates :condition, presence: true
+  validates :condition_id, presence: true
   # <!-- condition      =  アイテムの状態       -->
 
   with_options presence: true, format: { with: /\A[0-9]+\z/ } do
-    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 },
+    validates :price, numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999 },
                       presence: { message: "Can't be blank"}
   end
   # <!-- price          =  販売価格            -->

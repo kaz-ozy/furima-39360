@@ -49,7 +49,14 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Price is not a number"
       end
 
-      it 'priceが設定範囲以外だと出品できない' do
+      it 'priceが300円以下では出品できない' do
+        @item.price = 299
+        @item.valid?
+        
+        expect(@item.errors.full_messages).to include "Price must be greater than or equal to 300"
+      end
+      
+        it 'priceが設定範囲以外だと出品できない' do
         @item.price = 100000000
         @item.valid?
         
@@ -89,9 +96,15 @@ RSpec.describe Item, type: :model do
         
         expect(@item.errors.full_messages).to include "Days ship can't be blank"
       end
+
+      it 'userが紐づいていなければ購入できないこと' do
+        @item.user = nil
+        @item.valid?
+        binding.pry
+        expect(@item.errors.full_messages).to include "User must exist"
+      end
     end
   end
 end
 
 
-# binding.pry  止める構文
