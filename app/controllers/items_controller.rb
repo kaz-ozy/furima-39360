@@ -32,4 +32,3 @@ end
 
 # @items = Item.order("created_at DESC")
 # before_action :authenticate_user!,
-# 
