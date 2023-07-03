@@ -138,4 +138,4 @@ end
 end
 
 
-        # binding.pry  止める構文
+        # binding.pry  止める構文です
