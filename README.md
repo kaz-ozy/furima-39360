@@ -66,16 +66,18 @@ has_many :orders
 | charge_id             | integer      | null: false                    |
 | prefecture_id         | integer      | null: false                    |
 | days_ship_id          | integer      | null: false                    |
+| seller                | integer      | null: false                    |
 | user                  | references   | null: false ,foreign_key: true |
 
-<!-- name           =  アイテム名           -->
-<!-- explanation    =  アイテムテキスト      -->
-<!-- category       =  アイテムカテゴリー    -->
-<!-- condition      =  アイテムの状態       -->
-<!-- price          =  販売価格            -->
-<!-- charges        =  配送料の負担         -->
-<!-- prefecture     =  発送元の地域         -->
-<!-- days_ship      =  発送までの日数        -->
+<!-- name           =  アイテム名          -->
+<!-- explanation    =  アイテムテキスト     -->
+<!-- category       =  アイテムカテゴリー   -->
+<!-- condition      =  アイテムの状態      -->
+<!-- price          =  販売価格           -->
+<!-- charge         =  配送料の負担        -->
+<!-- prefecture     =  発送元の地域        -->
+<!-- days_ship      =  発送までの日数       -->
+<!-- seller         =  出品者              -->
 
 ### Association
 belongs_to :user
